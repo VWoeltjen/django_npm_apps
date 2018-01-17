@@ -45,11 +45,13 @@ class NpmAppFinder(AppDirectoriesFinder):
             return set()
 
         deps = set(package['dependencies'].keys()) - self.modules_names
-        self.modules_names |= deps
 
         django_config = {}
         if 'django' in package:
             django_config = package['django']
+            deps |= set(django_config.keys())
+
+        self.modules_names |= deps
 
         return deps, django_config
 
