@@ -27,4 +27,4 @@ class Command(BaseCommand):
 
         for path in app_paths:
             print path
-            subprocess.Popen(['/usr/bin/npm', 'install'], cwd=path).wait()
+            subprocess.Popen(['/usr/bin/npm', 'install', '--unsafe-perm'], cwd=path).wait()
